@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  postfix-relay:
+    container_name: postfix-relay
+    build: .
+    restart: always
+    ports:
+      - 25:25 # You can choose another port like 2525:25 or 20025:25 or whatever
+    environment:
+      - DOMAIN=<your domain here> # This must be a valid domain name like mydomain.com
+    volumes:
+      - ./src/opendkim:/etc/opendkim-volume
